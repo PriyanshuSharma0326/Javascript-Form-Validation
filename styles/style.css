@@ -63,6 +63,10 @@ body {
     font-weight: 600;
 }
 
+.error-text::first-letter {
+    text-transform:capitalize;
+}
+
 .hidden {
     display: none;
 }

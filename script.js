@@ -12,7 +12,7 @@ function checkInput(inputElement) {
     nextElement = inputElement.nextElementSibling;
     if(!inputElement.value) {
         nextElement.classList.remove('hidden');
-        nextElement.innerText = 'Error';
+        nextElement.innerText = `${inputElement.name} can't be blank!`;
     }
     else {
         if(nextElement) {
