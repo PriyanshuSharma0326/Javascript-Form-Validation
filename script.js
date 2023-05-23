@@ -8,19 +8,20 @@ const confirmPassword = document.getElementById('confirm-password');
 
 const submit = document.getElementById('submit-button');
 
-function checkLength(inputElement, min, max) {
-    nextElement = inputElement.nextElementSibling;
-    if(inputElement.value.length) {
-        if(inputElement.value.length <= min) {
+let redOutline = '1px solid red';
+let greenOutline = '1px solid green';
+
+function validMail(mail) {
+    if(mail.value) {
+        nextElement = mail.nextElementSibling;
+        if(!(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(mail.value))) {
+            mail.style.outline = redOutline;
             nextElement.classList.remove('hidden');
-            nextElement.innerText = `${inputElement.name} should be greater than ${min}`;
-        }
-        else if(inputElement.value.length >= max) {
-            nextElement.classList.remove('hidden');
-            nextElement.innerText = `${inputElement.name} should be less than ${max}`;
+            nextElement.innerText = 'Invalid email format!';
         }
         else {
             if(nextElement) {
+                mail.style.outline = greenOutline;
                 if(!nextElement.classList.contains('hidden')) {
                     nextElement.classList.add('hidden');
                 }
@@ -30,16 +31,22 @@ function checkLength(inputElement, min, max) {
     }
 }
 
-function validMail(mail)
-{
-    if(mail.value) {
-        nextElement = mail.nextElementSibling;
-        if(!(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(mail.value))) {
+function checkLength(inputElement, min, max) {
+    nextElement = inputElement.nextElementSibling;
+    if(inputElement.value.length) {
+        if(inputElement.value.length <= min) {
+            inputElement.style.outline = redOutline;
             nextElement.classList.remove('hidden');
-            nextElement.innerText = 'Invalid email format!';
+            nextElement.innerText = `${inputElement.name} should be greater than ${min}`;
+        }
+        else if(inputElement.value.length >= max) {
+            inputElement.style.outline = redOutline;
+            nextElement.classList.remove('hidden');
+            nextElement.innerText = `${inputElement.name} should be less than ${max}`;
         }
         else {
             if(nextElement) {
+                inputElement.style.outline = greenOutline;
                 if(!nextElement.classList.contains('hidden')) {
                     nextElement.classList.add('hidden');
                 }
@@ -52,11 +59,13 @@ function validMail(mail)
 function checkInput(inputElement) {
     nextElement = inputElement.nextElementSibling;
     if(inputElement.value.length === 0) {
+        inputElement.style.outline = redOutline;
         nextElement.classList.remove('hidden');
         nextElement.innerText = `${inputElement.name} can't be blank!`;
     }
     else {
         if(nextElement) {
+            inputElement.style.outline = greenOutline;
             if(!nextElement.classList.contains('hidden')) {
                 nextElement.classList.add('hidden');
             }
@@ -69,11 +78,13 @@ function comparePasswords(pass1, pass2) {
     if(pass2.value) {
         nextElement = pass2.nextElementSibling;
         if(pass1.value !== pass2.value) {
+            pass2.style.outline = redOutline;
             nextElement.classList.remove('hidden');
             nextElement.innerText = 'Password doesn\'t match!';
         }
         else {
             if(nextElement) {
+                pass2.style.outline = greenOutline;
                 if(!nextElement.classList.contains('hidden')) {
                     nextElement.classList.add('hidden');
                 }
