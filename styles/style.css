@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #00ABB3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'EB Garamond', serif;
+}
+
+.form-box {
+    background-color: #EAEAEA;
+    padding: 2rem 1.5rem;
+    border-radius: 0.5rem;
+    width: 24rem;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-section label {
+    margin-bottom: 0.75rem;
+    color: #303338;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.input-section input {
+    padding: 0.75rem;
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3C4048;
+}
+
+.input-section input::placeholder {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.error-text {
+    margin-top: 0.35rem;
+    color: #D21312;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.submit-button {
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #00ABB3;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.submit-button:hover {
+    background-color: #008D94;
+}
+
+@media screen and (max-width: 376px) {
+    .form-box {
+        width: 22rem;
+    }
+}
