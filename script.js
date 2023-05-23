@@ -8,9 +8,50 @@ const confirmPassword = document.getElementById('confirm-password');
 
 const submit = document.getElementById('submit-button');
 
+function checkLength(inputElement, min, max) {
+    nextElement = inputElement.nextElementSibling;
+    if(inputElement.value.length) {
+        if(inputElement.value.length <= min) {
+            nextElement.classList.remove('hidden');
+            nextElement.innerText = `${inputElement.name} should be greater than ${min}`;
+        }
+        else if(inputElement.value.length >= max) {
+            nextElement.classList.remove('hidden');
+            nextElement.innerText = `${inputElement.name} should be less than ${max}`;
+        }
+        else {
+            if(nextElement) {
+                if(!nextElement.classList.contains('hidden')) {
+                    nextElement.classList.add('hidden');
+                }
+                nextElement = null;
+            }
+        }
+    }
+}
+
+function validMail(mail)
+{
+    if(mail.value) {
+        nextElement = mail.nextElementSibling;
+        if(!(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(mail.value))) {
+            nextElement.classList.remove('hidden');
+            nextElement.innerText = 'Invalid email format!';
+        }
+        else {
+            if(nextElement) {
+                if(!nextElement.classList.contains('hidden')) {
+                    nextElement.classList.add('hidden');
+                }
+                nextElement = null;
+            }
+        }
+    }
+}
+
 function checkInput(inputElement) {
     nextElement = inputElement.nextElementSibling;
-    if(!inputElement.value) {
+    if(inputElement.value.length === 0) {
         nextElement.classList.remove('hidden');
         nextElement.innerText = `${inputElement.name} can't be blank!`;
     }
@@ -44,10 +85,20 @@ function comparePasswords(pass1, pass2) {
 
 submit.addEventListener('click', (e) => {
     e.preventDefault();
+
     checkInput(username);
+    checkLength(username, 5, 12);
+
     checkInput(email);
+    validMail(email)
+
     checkInput(phone);
+    checkLength(phone, 9, 11);
+
     checkInput(password);
+    checkLength(password, 8, 15);
+
     checkInput(confirmPassword);
+
     comparePasswords(password, confirmPassword);
 });
