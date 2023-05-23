@@ -48,7 +48,7 @@ body {
     border-radius: 0.25rem;
     font-size: 1.1rem;
     font-weight: 600;
-    /* color: #3C4048; */
+    color: #3C4048;
 }
 
 .input-section input::placeholder {
@@ -72,7 +72,7 @@ body {
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: #00ABB3;
-    color: white;
+    color: #FFFFFF;
     outline: none;
     border: none;
     font-size: 1.1rem;
